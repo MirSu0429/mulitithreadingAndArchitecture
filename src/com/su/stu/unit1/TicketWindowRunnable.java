@@ -30,5 +30,6 @@ public class TicketWindowRunnable  implements Runnable{
         new Thread(t,"2号机").start();
         new Thread(t,"3号机").start();
         new Thread(t,"4号机").start();
+        new Thread(t,"5号机").start();
     }
 }
