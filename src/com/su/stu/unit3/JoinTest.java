@@ -29,13 +29,16 @@ public class JoinTest {
 
     public static void main(String[] args) throws Exception {
         List<Thread> threads = IntStream.range(0, 3).mapToObj(JoinTest::create).collect(Collectors.toList());
-
         threads.forEach(Thread::start);
-
-       /* for (Thread thread : threads) {
+        threads.forEach(e-> {
+            try {
+                e.join();
+            } catch (InterruptedException e1) {
+            }
+        });
+        /*for (Thread thread : threads) {
             thread.join();
         }*/
-
         IntStream.range(0, 10).mapToObj(e -> e+"").forEach(JoinTest::shortSleep);
         //TimeUnit.SECONDS.sleep(11);
         threads.get(0).join();
