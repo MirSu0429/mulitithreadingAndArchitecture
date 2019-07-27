@@ -9,9 +9,9 @@ import java.util.concurrent.TimeUnit;
  * @Date: 2019/7/24 21:48
  * @Description:
  */
-public class VolattileFoo {
+public class VolatileFoo {
     final static int MAX = 5;
-    static  int initValue = 0;
+    static volatile int initValue = 0;
 
     public static void main(String[] args) {
         new Thread(() -> {
@@ -29,11 +29,11 @@ public class VolattileFoo {
             while (localValue < MAX) {
                 System.out.println("initValue的值将要改变了" + (++localValue));
                 initValue = localValue;
-                /*try {
+                try {
                     TimeUnit.SECONDS.sleep(2);
                 } catch (InterruptedException e) {
                     e.printStackTrace();
-                }*/
+                }
 
             }
         }).start();
